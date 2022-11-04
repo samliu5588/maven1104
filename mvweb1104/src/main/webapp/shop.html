@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Shop</title>
+</head>
+
+<body bgcolor="white">
+<script src="js/jquery3.6.0.js"></script>
+	<form>
+		<BR> Please enter item to add or remove: <br> Add Item:
+		 <SELECT NAME="item" id="item">
+			<OPTION>Beavis & Butt-head Video collection
+			<OPTION>X-files movie
+			<OPTION>Twin peaks tapes
+			<OPTION>NIN CD
+			<OPTION>JSP Book
+			<OPTION>Concert tickets
+			<OPTION>Love life
+			<OPTION>Switch blade
+			<OPTION>Rex, Rugs & Rock n' Roll
+		</SELECT>
+		 <br> <br> 
+		<INPUT TYPE="button" id="s1" value="add">
+		<INPUT TYPE="button" id="s2" value="remove">
+	</form>
+	<p>
+	<div id="items">products</div>
+	<script>
+	      function showItems(rs){
+            $("#items").html(rs);
+	      }
+	      function sendAdd(e){
+              e.preventDefault();
+              var data={"item":$("#item").val() ,"submit":"add"};
+              $.post("carts.jsp",data,showItems);
+              
+	      }
+	      function sendRemove(e){
+              e.preventDefault();
+              var data={"item":$("#item").val() ,"submit":"remove"};
+              $.post("carts.jsp",data,showItems);
+              
+	      }
+	      function start(){
+             $("#s1").click(sendAdd);
+             $("#s2").click(sendRemove);
+	      }
+          $(document).ready(start);
+	</script>
+</body>
+</html>
